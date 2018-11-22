@@ -1,7 +1,7 @@
 FROM node:alpine
 WORKDIR '/app'
 COPY package.json .
-RUN echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+RUN echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
 RUN npm install
 
 #COPY . .
