@@ -3,6 +3,7 @@ services:
     - docker 
 before_install:
   - docker build -t react-docker -f Dockerfile.dev .
-  - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
+
 script:
+  - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
   - docker run react-docker npm run test -- --coverage
