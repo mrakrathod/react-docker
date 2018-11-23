@@ -1,6 +1,18 @@
 sudo: required
   
 services:
-    - docker 
+    - docker
+
+language: node_js
+
+node_js:
+  - 8
+  - 10
+  - node
+
 before_install:
   - docker build -t react-docker -f Dockerfile.dev .
+
+
+script:
+  - docker run react-docker npm run test -- --coverage
