@@ -19,6 +19,11 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
     secure: $AWS_SECRET_KEY
+  addons:
+    artifacts:
+        s3_region: "us-west-2"
+        paths:
+          - $(git ls-files -o app/build/outputs | tr "\n" ":")
   on:
     branch: master
 
